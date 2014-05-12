@@ -1,5 +1,5 @@
 # Chess Web
-An exercise in browser-based data management and presentation
+An exercise in browser-based data management and presentation.
 
 ## Introduction
 This exercise is meant to demonstrate front-end skills (HTML, CSS, JavaScript).  To that end, the goal is to build
@@ -34,19 +34,15 @@ Server started at: http://localhost:8080/
 To stop the server, just hit <return>
 ```
 
-At this point you should have an HTTP server running locally.  Hit the (ahem) existing Chess UI here (it's just a static
-page):
+At this point you should have an HTTP server running locally.  The existing Chess UI (it's just a static page) is available at /chess:
+[http://localhost:8080/chess](http://localhost:8080/chess)
 
-http://localhost:8080/chess
-
-This directory is mapped to {{src/main/webapp}} in the project tree.  You should be able to modify the 'index.html' file
-there and see it immediately reflected in a web page.
+That path is mapped to `src/main/webapp` in the project tree.  You should be able to modify the 'index.html' file there and see it immediately reflected in a web page.
 
 The API to talk to the Chess Engine is available here:
+[http://localhost:8080/chess/api](http://localhost:8080/chess/api)
 
-http://localhost:8080/chess/api
-
-The detail of the API are described throughly in the Goals below.
+The detail of the API are described throughly below.
 
 ## The Game of Chess
 We assume you have at least passing knowledge of the game of chess, but no strategy is necessary for this project.  If
@@ -127,7 +123,7 @@ This isn't a useful UI, but may be helpful to you when getting started.
 ### Game State
 Endpoint:  http://localhost:8080/api/chess
 
-#### GET
+*GET http://localhost:8080/api/chess*
 Issuing an HTTP GET request will retrieve the current state of the game as a JSON object.  The format of the data looks
 like:
 ```json
@@ -163,12 +159,12 @@ owner (`White` or `Black`), and its piece type.  The piece types are listed belo
 
 Note that, contrary to the output in the custom headers described above, the piece type will always be lower case.
 
-### POST
+*POST http://localhost:8080/api/chess*
 Issuing a POST to this endpoint will create a brand new game, resetting the pieces back to their original starting
 positions.  Any content provided is ignored.  This is the only way to restart the game, apart from restarting the
 server.
 
-### PUT
+*PUT http://localhost:8080/api/chess*
 Issuing a PUT request to this endpoint will alter the state of the game.  The body of the PUT request should match that
 returned from the GET request.  However, only the `positionToPieces` element will be interpreted; everything else is
 ignored.
@@ -223,11 +219,12 @@ turn, a valid request to the API would be to PUT the following content to the `/
 ```
 This request would move the White Queen out to `a5`, putting the Black King in Check.
 
-## Moves
+### Moves
+
 Endpoint:  http://localhost:8080/api/chess/moves
 This endpoint represents moves that may be made on the board, altering the game state.
 
-### GET
+*GET http://localhost:8080/api/chess/moves*
 Issuing an HTTP GET to this endpoint will return you the current list of valid moves, given the placement of the
 pieces and whose turn it currently is.  For instance, when the game first starts this will return:
 
@@ -255,7 +252,7 @@ pieces and whose turn it currently is.  For instance, when the game first starts
 This is a JSON array represents the 20 opening moves that the White player could make.  As the game progresses, this
 endpoint will always return the full set of legal moves.
 
-### POST
+*POST http://localhost:8080/api/chess/moves*
 To make a move, you may also issue a POST request to `/api/chess/moves`, instead of issuing a PUT to the game state
 endpoint.  For instance, in the scenario described above, to move the White Queen from `a2` to `a5` you could issue
 a POST to this endpoint with this body:
@@ -282,6 +279,6 @@ Our suggested sequence of milestones is:
 Note that we are not interested in how your application is served to the browser.  For instance, if you choose to use
 a technology for loading JavaScript files as separate modules (i.e. RequireJS), don't worry about integrating the JS
 optimizer or other technologies.  Stay focused on delivering a good user experience, modeling the data correctly, and
-showing your skills at browser-based applications.  Just assume deployment is someone else's job.
+showing your skills at browser-based applications.  _Just assume deployment is someone else's job_.
 
 Good Luck!
