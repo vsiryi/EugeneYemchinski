@@ -37,8 +37,10 @@ public class Server {
         System.out.println("Starting Embedded Web Server ...");
 
         HttpServer httpServer = startServer();
-        System.out.println("Server started at: " + BASE_URI);
+        System.out.println(" ===================================================================== ");
+        System.out.println("Server started.  See the UI at: " + BASE_URI + "chess");
         System.out.println("To stop the server, just hit <return>");
+        System.out.println(" ===================================================================== ");
 
         //noinspection ResultOfMethodCallIgnored
         System.in.read();
@@ -57,11 +59,6 @@ public class Server {
         ChessStaticHttpHandler() {
             super("src/main/webapp");
             setFileCacheEnabled(false);
-        }
-
-        @Override
-        protected boolean handle(String uri, Request request, Response response) throws Exception {
-            return super.handle(uri, request, response);
         }
     }
 }
