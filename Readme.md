@@ -117,7 +117,7 @@ If you squint your eyes, you can make out the 8 x 8 chess board there.  Each squ
 
 This isn't a useful UI, but may be helpful to you when getting started.
 
-### Game State Endpoing
+### Game State Endpoint
 *Endpoint:  http://localhost:8080/api/chess*
 
 This endpoint represents the state of the game.  It supports GET, POST, and PUT requests, as described below.
@@ -213,7 +213,7 @@ turn, a valid request to the API would be to PUT the following content to the `/
 ```
 This request would move the White Queen out to `a5`, putting the Black King in Check.
 
-### Moves
+### Moves Endpoint
 
 *Endpoint:  http://localhost:8080/api/chess/moves*
 This endpoint represents moves that may be made on the board, altering the game state.  It supports GET and POST requests, as described below.
