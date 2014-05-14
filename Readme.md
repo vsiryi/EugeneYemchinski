@@ -264,11 +264,11 @@ user interface for playing the game of chess.  You are free to use any browser-b
 JavaScript application frameworks are especially recommended.
 
 Our suggested sequence of milestones is:
-* Be able to draw the chess board
-* Be able to draw the chess pieces in the correct place
-* Be able to react to a player attempting to move a piece
-* Be able to indicate to the user when the current player is in Check
-* Be able to draw the chess board when the game is over
+
+1. Be able to draw the chess board with pieces in place
+2. Be able to react to a player moving a piece
+3. Be able to indicate to the user when the current player is in Check
+4. Be able to draw the chess board when the game is over
 
 Note that we are not interested in how your application is served to the browser.  For instance, if you choose to use
 a technology for loading JavaScript files as separate modules (i.e. RequireJS), don't worry about integrating the JS
