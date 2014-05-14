@@ -85,10 +85,10 @@ The API for interacting with the provided Chess engine is a REST-ful set of endp
 functionality (for instance, executing a move) is possible in more than one way.  Feel free to choose the API that
 best suits your client-side design.
 
-To help you follow the current state of the game without having to constantly decode JSON documents, the API provides
-custom headers that show the state of the board in text form.  After executing any call to the endpoints described below,
-examine the response headers in your browser's network debugger.  You should see a collection of custom headers showing
-the current state of the game, like:
+
+### Debugging The Game
+To help you follow the current state of the game without having to decode JSON documents, the API provides
+custom headers that show the state of the board in text form.  After executing any call to the endpoints described below, examine the response headers in your browser's network debugger.  You should see a collection of custom headers showing the current state of the game, like:
 
 ```
 X-Chess-000:----a   b   c   d   e   f   g   h
@@ -113,19 +113,17 @@ X-Chess-018:----a   b   c   d   e   f   g   h
 X-Chess-019:> Black's Move
 ```
 
-Each square on a chess board is described by its column-and-row pair.  So, the bottom-left square on the board is `a1`,
-while the middle four squares are `d4`, `d5`, `e4`, and `e5`.  The header output shown here shows the 8 X 8 chess board
-in text form, with row- and column-labels around the outside of the board.  The White pieces are represented as lower
-case, while the Black pieces are upper case.
+If you squint your eyes, you can make out the 8 x 8 chess board there.  Each square on a chess board is described by its column-and-row pair.  So, the bottom-left square on the board is `a1`, while the middle four squares are `d4`, `d5`, `e4`, and `e5`.  The header output shown here shows the board in text form, with row- and column-labels around the outside of the board.  The White pieces are represented as lower case, while the Black pieces are upper case.
 
 This isn't a useful UI, but may be helpful to you when getting started.
 
-### Game State
-Endpoint:  http://localhost:8080/api/chess
+### Game State Endpoing
+*Endpoint:  http://localhost:8080/api/chess*
 
-*GET http://localhost:8080/api/chess*
-Issuing an HTTP GET request will retrieve the current state of the game as a JSON object.  The format of the data looks
-like:
+This endpoint represents the state of the game.  It supports GET, POST, and PUT requests, as described below.
+
+####GET http://localhost:8080/api/chess
+Issuing an HTTP GET request to `/api/chess` will retrieve the current state of the game as a JSON object.  The format of the data looks like:
 ```json
 {
   "currentPlayer" : "White",
@@ -145,7 +143,7 @@ like:
 }
 ```
 Each square on a chess board is described by its column-and-row pair.  So, the bottom-left square on the board is `a1`,
-while the middle four squares are `d4`, `d5`, `e4`, and `e5`.
+while the middle four squares are `d4`, `d5`, `e4`, and `e5`, and the top right square is `h8`.
 
 The `positionToPieces` element in the returned data contains one entry for each piece on the board, describing its
 owner (`White` or `Black`), and its piece type.  The piece types are listed below:
@@ -157,14 +155,13 @@ owner (`White` or `Black`), and its piece type.  The piece types are listed belo
 * q - Queen
 * k - King
 
-Note that, contrary to the output in the custom headers described above, the piece type will always be lower case.
+Note that, contrary to the output in the custom headers described above, the piece type will always be lower case for each player.
 
-*POST http://localhost:8080/api/chess*
+####POST http://localhost:8080/api/chess
 Issuing a POST to this endpoint will create a brand new game, resetting the pieces back to their original starting
-positions.  Any content provided is ignored.  This is the only way to restart the game, apart from restarting the
-server.
+positions.  Any content provided in the body of the request is ignored.  This is the only way to restart the game, apart from restarting the server.
 
-*PUT http://localhost:8080/api/chess*
+####PUT http://localhost:8080/api/chess
 Issuing a PUT request to this endpoint will alter the state of the game.  The body of the PUT request should match that
 returned from the GET request.  However, only the `positionToPieces` element will be interpreted; everything else is
 ignored.
@@ -198,9 +195,6 @@ turn, a valid request to the API would be to PUT the following content to the `/
 
 ```json
 {
-  "currentPlayer" : "White",
-  "inCheck" : false,
-  "gameOver" : false,
   "positionToPieces" : {
     "d5" : {
       "owner" : "Black",
@@ -221,10 +215,10 @@ This request would move the White Queen out to `a5`, putting the Black King in C
 
 ### Moves
 
-Endpoint:  http://localhost:8080/api/chess/moves
-This endpoint represents moves that may be made on the board, altering the game state.
+*Endpoint:  http://localhost:8080/api/chess/moves*
+This endpoint represents moves that may be made on the board, altering the game state.  It supports GET and POST requests, as described below.
 
-*GET http://localhost:8080/api/chess/moves*
+####GET http://localhost:8080/api/chess/moves
 Issuing an HTTP GET to this endpoint will return you the current list of valid moves, given the placement of the
 pieces and whose turn it currently is.  For instance, when the game first starts this will return:
 
@@ -252,7 +246,7 @@ pieces and whose turn it currently is.  For instance, when the game first starts
 This is a JSON array represents the 20 opening moves that the White player could make.  As the game progresses, this
 endpoint will always return the full set of legal moves.
 
-*POST http://localhost:8080/api/chess/moves*
+####POST http://localhost:8080/api/chess/moves
 To make a move, you may also issue a POST request to `/api/chess/moves`, instead of issuing a PUT to the game state
 endpoint.  For instance, in the scenario described above, to move the White Queen from `a2` to `a5` you could issue
 a POST to this endpoint with this body:
