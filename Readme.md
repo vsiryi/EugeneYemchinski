@@ -53,7 +53,7 @@ http://en.wikipedia.org/wiki/Chess
 Additionally, the chess engine embedded in this project can run a chess game via a CLI.  To run it, do the following:
 
 ```
-$ java -cp src/local-libs/conductor/chess-core/0.9.0/chess-core-0.9.0.jar chess.CLI
+$ java -cp src/local-libs/conductor/chess-core/0.9.1/chess-core-0.9.1.jar chess.CLI
 Welcome to Chess!
 Type 'help' for a list of commands.
     a   b   c   d   e   f   g   h
