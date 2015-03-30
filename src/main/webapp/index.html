@@ -1,12 +1,153 @@
-<html>
-<body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Chess</title>
 
-<p>
-    Welcome to the Chess Web!
-</p>
-<p>
-    You'll probably want to update this file, eh?
-</p>
+    <link rel="stylesheet" href="styles/styles.css">
+</head>
+<body>
+    
+    <div class="container">
+        <button>Reset game</button><br><br>
+
+        <div>Current Player: <strong>White</strong></div><br><br>
+
+        <div class="chessboard">
+            <table class="table table-bordered table-nonfluid"><tbody>
+
+            <tr>
+                <td></td>
+                <td><div class="item"><strong>a</strong></div></td>
+                <td><div class="item"><strong>b</strong></div></td>
+                <td><div class="item"><strong>c</strong></div></td>
+                <td><div class="item"><strong>d</strong></div></td>
+                <td><div class="item"><strong>e</strong></div></td>
+                <td><div class="item"><strong>f</strong></div></td>
+                <td><div class="item"><strong>g</strong></div></td>
+                <td><div class="item"><strong>h</strong></div></td>
+                <td></td>
+            </tr>
+
+            <tr>
+                <td><div class="item"><strong>8</strong></div></td>
+                <td><div class="item"><strong>♜</strong></div></td>
+                <td><div class="item"><strong>♞</strong></div></td>
+                <td><div class="item"><strong>♝</strong></div></td>
+                <td><div class="item"><strong>♛</strong></div></td>
+                <td><div class="item"><strong>♚</strong></div></td>
+                <td><div class="item"><strong>♝</strong></div></td>
+                <td><div class="item"><strong>♞</strong></div></td>
+                <td><div class="item"><strong>♜</strong></div></td>
+                <td><div class="item"><strong>8</strong></div></td>
+            </tr>
+
+            <tr>
+                <td><div class="item"><strong>7</strong></div></td>
+                <td><div class="item"><strong>♟</strong></div></td>
+                <td><div class="item"><strong>♟</strong></div></td>
+                <td><div class="item"><strong>♟</strong></div></td>
+                <td><div class="item"><strong>♟</strong></div></td>
+                <td><div class="item"><strong>♟</strong></div></td>
+                <td><div class="item"><strong>♟</strong></div></td>
+                <td><div class="item"><strong>♟</strong></div></td>
+                <td><div class="item"><strong>♟</strong></div></td>
+                <td><div class="item"><strong>7</strong></div></td>
+            </tr>
+
+            <tr>
+                <td><div class="item"><strong>6</strong></div></td>
+                <td><div class="item"><strong></strong></div></td>
+                <td><div class="item"><strong></strong></div></td>
+                <td><div class="item"><strong></strong></div></td>
+                <td><div class="item"><strong></strong></div></td>
+                <td><div class="item"><strong></strong></div></td>
+                <td><div class="item"><strong></strong></div></td>
+                <td><div class="item"><strong></strong></div></td>
+                <td><div class="item"><strong></strong></div></td>
+                <td><div class="item"><strong>6</strong></div></td>
+            </tr>
+
+            <tr>
+                <td><div class="item"><strong>5</strong></div></td>
+                <td><div class="item"><strong></strong></div></td>
+                <td><div class="item"><strong></strong></div></td>
+                <td><div class="item"><strong></strong></div></td>
+                <td><div class="item"><strong></strong></div></td>
+                <td><div class="item"><strong></strong></div></td>
+                <td><div class="item"><strong></strong></div></td>
+                <td><div class="item"><strong></strong></div></td>
+                <td><div class="item"><strong></strong></div></td>
+                <td><div class="item"><strong>5</strong></div></td>
+            </tr>
+            <tr>
+                <td><div class="item"><strong>4</strong></div></td>
+                <td><div class="item"><strong></strong></div></td>
+                <td><div class="item"><strong></strong></div></td>
+                <td><div class="item"><strong></strong></div></td>
+                <td><div class="item"><strong></strong></div></td>
+                <td><div class="item destination"><strong></strong></div></td>
+                <td><div class="item"><strong></strong></div></td>
+                <td><div class="item"><strong></strong></div></td>
+                <td><div class="item"><strong></strong></div></td>
+                <td><div class="item"><strong>4</strong></div></td>
+            </tr>
+
+            <tr>
+                <td><div class="item"><strong>3</strong></div></td>
+                <td><div class="item"><strong></strong></div></td>
+                <td><div class="item"><strong></strong></div></td>
+                <td><div class="item"><strong></strong></div></td>
+                <td><div class="item"><strong></strong></div></td>
+                <td><div class="item"><strong></strong></div></td>
+                <td><div class="item"><strong></strong></div></td>
+                <td><div class="item"><strong></strong></div></td>
+                <td><div class="item"><strong></strong></div></td>
+                <td><div class="item"><strong>3</strong></div></td>
+            </tr>
+
+            <tr>
+                <td><div class="item"><strong>2</strong></div></td>
+                <td><div class="item"><strong>♙</strong></div></td>
+                <td><div class="item"><strong>♙</strong></div></td>
+                <td><div class="item"><strong>♙</strong></div></td>
+                <td><div class="item"><strong>♙</strong></div></td>
+                <td><div class="item selected"><strong>♙</strong></div></td>
+                <td><div class="item"><strong>♙</strong></div></td>
+                <td><div class="item"><strong>♙</strong></div></td>
+                <td><div class="item"><strong>♙</strong></div></td>
+                <td><div class="item"><strong>2</strong></div></td>
+            </tr>
+
+            <tr>
+                <td><div class="item"><strong>1</strong></div></td>
+                <td><div class="item"><strong>♖</strong></div></td>
+                <td><div class="item"><strong>♘</strong></div></td>
+                <td><div class="item"><strong>♗</strong></div></td>
+                <td><div class="item"><strong>♕</strong></div></td>
+                <td><div class="item"><strong>♔</strong></div></td>
+                <td><div class="item"><strong>♗</strong></div></td>
+                <td><div class="item"><strong>♘</strong></div></td>
+                <td><div class="item"><strong>♖</strong></div></td>
+                <td><div class="item"><strong>1</strong></div></td>
+            </tr>
+
+            <tr>
+                <td></td>
+                <td><div class="item"><strong>a</strong></div></td>
+                <td><div class="item"><strong>b</strong></div></td>
+                <td><div class="item"><strong>c</strong></div></td>
+                <td><div class="item"><strong>d</strong></div></td>
+                <td><div class="item"><strong>e</strong></div></td>
+                <td><div class="item"><strong>f</strong></div></td>
+                <td><div class="item"><strong>g</strong></div></td>
+                <td><div class="item"><strong>h</strong></div></td>
+                <td></td>
+            </tr>
+
+        </tbody></table>
+        </div>
+    </div>
 
 </body>
 </html>

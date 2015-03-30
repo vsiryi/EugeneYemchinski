@@ -1,0 +1,36 @@
+body * {
+  padding: 0;
+  margin: 0;
+}
+
+.container {
+  margin: 50px auto;
+  width: 400px;
+}
+
+.chessboard {
+  float: left;
+  position: relative;
+  }
+  .chessboard tr:nth-child(odd) td:nth-child(even),
+  .chessboard tr:nth-child(even) td:nth-child(odd) {
+    background:#eeeeee;
+  }
+  .chessboard .item {
+    cursor: pointer;
+    font-size: 24px;
+    text-align: center;
+    height: 32px;
+    width: 32px;
+    display: table-cell;
+    vertical-align: middle;
+    }
+    .chessboard .item.selected {
+      border: 1px solid #333333;
+    }
+    .chessboard .item.destination {
+      background: #7b878c;
+    }
+    .chessboard .item.font-bold {
+      font-weight: bold;
+    }
