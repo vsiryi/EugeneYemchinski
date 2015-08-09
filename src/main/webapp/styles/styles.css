@@ -1,36 +1,65 @@
 body * {
-  padding: 0;
-  margin: 0;
+    padding: 0;
+    margin: 0;
+}
+
+.loading {
+    border-radius: 7px;
+    opacity: 0.9;
+    -moz-opacity: 0.9;
+    position: absolute;
+    z-index: 1000;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: rgba(218, 219, 220, 0.5) url(../images/loading.gif) 50% 50% no-repeat;
 }
 
 .container {
-  margin: 50px auto;
-  width: 400px;
+    margin: 50px auto;
+    width: 400px;
 }
 
 .chessboard {
-  float: left;
-  position: relative;
-  }
-  .chessboard tr:nth-child(odd) td:nth-child(even),
-  .chessboard tr:nth-child(even) td:nth-child(odd) {
-    background:#eeeeee;
-  }
-  .chessboard .item {
+    float: left;
+    position: relative;
+}
+
+.chessboard tr:nth-child(odd) td:nth-child(even),
+.chessboard tr:nth-child(even) td:nth-child(odd) {
+    background: #eeeeee;
+}
+
+.chessboard td.highlighted {
+    background-color: #DBFFD5 !important;
+}
+
+.chessboard .item {
     cursor: pointer;
-    font-size: 24px;
+    font-size: 22px;
     text-align: center;
     height: 32px;
     width: 32px;
     display: table-cell;
     vertical-align: middle;
-    }
-    .chessboard .item.selected {
-      border: 1px solid #333333;
-    }
-    .chessboard .item.destination {
-      background: #7b878c;
-    }
-    .chessboard .item.font-bold {
-      font-weight: bold;
-    }
+    padding: 1px;
+
+}
+
+.chessboard .item.edge-item {
+    font-size: 18px;
+}
+
+.chessboard .item.selected {
+    border: 1px solid #333333;
+    padding: 0;
+}
+
+.chessboard .item.destination {
+    background: #7b878c;
+}
+
+.chessboard .item.font-bold {
+    font-weight: bold;
+}
