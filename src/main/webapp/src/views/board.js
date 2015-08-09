@@ -2,13 +2,12 @@ define([
     "backbone",
     "views/cell",
     "views/figure",
-    "collections/cells",
     "collections/moves",
     "collections/figures",
     "text!templates/board.html",
     "text!templates/edge-cell.html",
     "toastr"
-], function (Backbone, CellView, FigureView, Cells, Moves, Figures, Template, EdgeCellTpl, toastr) {
+], function (Backbone, CellView, FigureView, Moves, Figures, Template, EdgeCellTpl, toastr) {
     return Backbone.View.extend({
 
         className: "chessboard",
@@ -20,7 +19,7 @@ define([
         },
 
         initialize: function () {
-            this.cellsCollection = new Cells();
+            this.cellsCollection = new Backbone.Collection;
             this.figuresCollection = new Figures();
             this.movesCollection = new Moves();
 
@@ -60,7 +59,6 @@ define([
         },
 
         render: function () {
-
             this.$el.html(this.template());
 
             this.$currentPlayer = this.$('strong[data-id="currentPlayer"]');

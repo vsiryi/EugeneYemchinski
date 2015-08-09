@@ -27,11 +27,6 @@ define([
 
         onClick: function () {
             this.trigger("selected", this.model);
-        },
-
-        render: function () {
-            //    this.$el.html(_.template(this.template)(this.model.toJSON()));
-            //    return this;
         }
     });
 });
